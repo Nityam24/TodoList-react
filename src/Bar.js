@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Bar() {
+export default function Bar({ todo }) {
   return (
     <div className="ist">
       <input type="checkbox" />
-      <span>Todo 1</span>
+      <span>{todo}</span>
       <select>
         <option value="priority" selected>
           priority
