@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Bar({ todo }) {
+export default function Bar({ task }) {
   return (
-    <div className="ist">
+    <div className="list">
       <input type="checkbox" />
       <span>{todo}</span>
       <select>
