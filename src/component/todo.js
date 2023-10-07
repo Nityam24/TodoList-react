@@ -3,7 +3,7 @@ import todo from "../images/todo.svg";
 import "../App.css";
 
 function Todo() {
-  //   const [inputData, setInputData] = useState("");
+  const [inputData, setInputData] = useState("");
   return (
     <>
       <div className="main-div">
