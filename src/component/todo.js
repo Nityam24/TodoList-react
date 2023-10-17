@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import todo from "../images/todo.svg";
+// import todo from "../images/todo.svg";
 import "../App.css";
 
 function Todo() {
-  const [inputData, setInputData] = useState("");
+  // const [inputData, setInputData] = useState("");
   return (
     <>
       <div className="main-div">
         <div className="child-div">
           <figure>
-            <img src={todo} alt="todologo" />
+            {/* <img src={todo} alt="todologo" /> */}
             <figcaption>Add your List</figcaption>
           </figure>
 
