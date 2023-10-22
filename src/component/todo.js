@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../App.css";
 
 function Todo() {
-  // const [inputData, setInputData] = useState("");
+  const [inputData, setInputData] = useState("");
   return (
     <>
       <div className="main-div">
