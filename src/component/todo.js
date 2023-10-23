@@ -7,8 +7,25 @@ function Todo() {
   const [items, setItems] = useState([]);
 
   const addItem = () => {
-    setItems();
+    if (!inputData) {
+    } else {
+      setItems([...items, inputData]);
+      setInputData("");
+    }
   };
+
+  const deleteItem = () => {
+    console.log(id);
+    const updatedItems = items.filter((elem, ind) => {
+      return ind !== id;
+    });
+    setItems(updatedItems);
+  };
+
+  const removeAll = () => {
+    setItems([]);
+  };
+
   return (
     <>
       <div className="main-div">
@@ -33,10 +50,18 @@ function Todo() {
           </div>
 
           <div className="showItems">
-            <div className="eachItems">
-              <h3>Appple</h3>
-              <i className="fa-trash-alt add-btn" title="Delete"></i>
-            </div>
+            {items.map((elem, ind) => {
+              return (
+                <div className="eachItem" key={ind}>
+                  <h3>{elem}</h3>
+                  <i
+                    className="fa-trash-alt add-btn"
+                    title="Delete"
+                    onClick={() => deleteItem(ind)}
+                  ></i>
+                </div>
+              );
+            })}
           </div>
 
           <div className="showItems">
