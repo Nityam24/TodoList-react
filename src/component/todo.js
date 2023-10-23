@@ -4,6 +4,11 @@ import "../App.css";
 
 function Todo() {
   const [inputData, setInputData] = useState("");
+  const [items, setItems] = useState([]);
+
+  const addItem = () => {
+    setItems();
+  };
   return (
     <>
       <div className="main-div">
@@ -14,8 +19,17 @@ function Todo() {
           </figure>
 
           <div className="=addItems">
-            <input type="text" placeholder="✍️ Add Items"></input>
-            <i className="fa fa-plus add-btn" title="Add Item"></i>
+            <input
+              type="text"
+              placeholder="✍️ Add Items..."
+              value={inputData}
+              onChange={(e) => setInputData(e.target.value)}
+            />
+            <i
+              className="fa fa-plus add-btn"
+              title="Add Item"
+              onClick={addItem}
+            ></i>
           </div>
 
           <div className="showItems">
