@@ -2,6 +2,19 @@ import React, { useState } from "react";
 // import todo from "../images/todo.svg";
 import "../App.css";
 
+//to get data from LS
+
+const getLocalItems = () => {
+  let list = localStorage.getItem("lists");
+  console.log(list);
+
+  if (list) {
+    return JSON.parse(localStorage.getItem("list"));
+  } else {
+    return [];
+  }
+};
+
 function Todo() {
   const [inputData, setInputData] = useState("");
   const [items, setItems] = useState([]);
