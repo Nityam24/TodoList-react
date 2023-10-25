@@ -17,12 +17,16 @@ const getLocalItems = () => {
 
 function Todo() {
   const [inputData, setInputData] = useState("");
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(getLocalItems());
 
   const addItem = () => {
     if (!inputData) {
     } else {
-      setItems([...items, inputData]);
+      const allInputData = {
+        id: new Date().getTime.toString(),
+        name: inputData,
+      };
+      setItems([...items, allInputData]);
       setInputData("");
     }
   };
@@ -65,12 +69,12 @@ function Todo() {
           <div className="showItems">
             {items.map((elem, ind) => {
               return (
-                <div className="eachItem" key={ind}>
-                  <h3>{elem}</h3>
+                <div className="eachItem" key={elem.id}>
+                  <h3>{elem.name}</h3>
                   <i
                     className="fa-trash-alt add-btn"
                     title="Delete"
-                    onClick={() => deleteItem(ind)}
+                    onClick={() => deleteItem(elem.id)}
                   ></i>
                 </div>
               );
