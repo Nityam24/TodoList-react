@@ -31,10 +31,10 @@ function Todo() {
     }
   };
 
-  const deleteItem = () => {
+  const deleteItem = (index) => {
     console.log(id);
-    const updatedItems = items.filter((elem, ind) => {
-      return ind !== id;
+    const updatedItems = items.filter((elem) => {
+      return index !== elem.id;
     });
     setItems(updatedItems);
   };
@@ -42,6 +42,8 @@ function Todo() {
   const removeAll = () => {
     setItems([]);
   };
+
+  const editItem = () => {};
 
   return (
     <>
@@ -67,15 +69,22 @@ function Todo() {
           </div>
 
           <div className="showItems">
-            {items.map((elem, ind) => {
+            {items.map((elem) => {
               return (
                 <div className="eachItem" key={elem.id}>
                   <h3>{elem.name}</h3>
-                  <i
-                    className="fa-trash-alt add-btn"
-                    title="Delete"
-                    onClick={() => deleteItem(elem.id)}
-                  ></i>
+                  <div className="todo-btn">
+                    <i
+                      className="fa-edit add-btn"
+                      title="Delete"
+                      onClick={() => editItem(elem.id)}
+                    ></i>
+                    <i
+                      className="fa-trash-alt add-btn"
+                      title="Delete"
+                      onClick={() => deleteItem(elem.id)}
+                    ></i>
+                  </div>
                 </div>
               );
             })}
