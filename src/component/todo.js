@@ -24,12 +24,16 @@ function Todo() {
   const addItem = () => {
     if (!inputData) {
     } else if (inputData && !toggleSubmit) {
-      setItems(items.map(elem) =>{
-        if(elem.id==isEditItem){
-          return {...elem, name: inputData}
-        }
-        
-      });
+      setItems(
+        items.map((elem) => {
+          if (elem.id == isEditItem) {
+            return { ...elem, name: inputData };
+          }
+        })
+      );
+      setToggleSubmit(true);
+      setInputData("");
+      setisEditItem(null);
     } else {
       const allInputData = {
         id: new Date().getTime.toString(),
