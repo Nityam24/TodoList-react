@@ -45,7 +45,6 @@ function Todo() {
   };
 
   const deleteItem = (index) => {
-    console.log(id);
     const updatedItems = items.filter((elem) => {
       return index !== elem.id;
     });
