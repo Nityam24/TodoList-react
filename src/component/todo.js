@@ -17,7 +17,7 @@ const getLocalItems = () => {
 
 function Todo() {
   const [inputData, setInputData] = useState("");
-  const [items, setItems] = useState(getLocalItems());
+  const [items, setItems] = useState([]);
   const [toggleSubmit, setToggleSubmit] = useState(true);
   const [isEditItem, setisEditItem] = useState(null);
 
