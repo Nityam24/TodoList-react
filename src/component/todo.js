@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import todo from "../images/todo.svg";
 import "../App.css";
 
@@ -18,9 +18,18 @@ const getLocalItems = () => {
 function Todo() {
   const [inputData, setInputData] = useState("");
   const [items, setItems] = useState(getLocalItems());
+  const [toggleSubmit, setToggleSubmit] = useState(true);
+  const [isEditItem, setisEditItem] = useState(null);
 
   const addItem = () => {
     if (!inputData) {
+    } else if (inputData && !toggleSubmit) {
+      setItems(items.map(elem) =>{
+        if(elem.id==isEditItem){
+          return {...elem, name: inputData}
+        }
+        
+      });
     } else {
       const allInputData = {
         id: new Date().getTime.toString(),
@@ -43,7 +52,20 @@ function Todo() {
     setItems([]);
   };
 
-  const editItem = () => {};
+  const editItem = (id) => {
+    let newEditItem = items.find((elem) => {
+      return elem.id == id;
+    });
+    console.log(newEditItem);
+
+    setToggleSubmit(false);
+    setInputData(newEditItem.name);
+    setisEditItem(id);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("lists", JSON.stringify(items));
+  }, [items]);
 
   return (
     <>
@@ -54,13 +76,26 @@ function Todo() {
             <figcaption>Add your List</figcaption>
           </figure>
 
-          <div className="=addItems">
+          <div className="addItems">
             <input
               type="text"
               placeholder="✍️ Add Items..."
               value={inputData}
               onChange={(e) => setInputData(e.target.value)}
             />
+            {toggleSubmit ? (
+              <i
+                className="fa fa-plus add-btn"
+                title="Add Item"
+                onClick={addItem}
+              ></i>
+            ) : (
+              <i
+                className="far fa-edit add-btn"
+                title="update Item"
+                onClick={addItem}
+              ></i>
+            )}
             <i
               className="fa fa-plus add-btn"
               title="Add Item"
